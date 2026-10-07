@@ -2,12 +2,13 @@
 import { useCallback, useEffect, useState } from "react";
 import type { AppData } from "./types";
 import { DEFAULT_COMPANIES } from "./targets";
-import { DEFAULT_PROFILE } from "./profile";
+import { DEFAULT_LETTER, DEFAULT_PROFILE } from "./profile";
 
 const KEY = "alternance-mathis-v1";
 
 const initial = (): AppData => ({
   profile: DEFAULT_PROFILE,
+  letter: DEFAULT_LETTER,
   companies: DEFAULT_COMPANIES,
   offers: [],
 });

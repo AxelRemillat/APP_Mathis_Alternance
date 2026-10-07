@@ -35,6 +35,12 @@ export default function AnalysisView({ a }: { a: Analysis }) {
         <div className="row"><h3>E-mail de candidature</h3><CopyButton text={a.coverEmail} /></div>
         <pre className="text">{a.coverEmail}</pre>
       </div>
+      {a.coverLetter && (
+        <div className="stack">
+          <div className="row"><h3>Lettre de motivation adaptée</h3><CopyButton text={a.coverLetter} /></div>
+          <pre className="text">{a.coverLetter}</pre>
+        </div>
+      )}
       <div className="stack">
         <div className="row">
           <h3>Note LinkedIn</h3>

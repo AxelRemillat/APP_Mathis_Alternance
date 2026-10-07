@@ -31,6 +31,7 @@ export type Analysis = {
   keywords: string[];
   redFlags: string[];
   coverEmail: string;
+  coverLetter: string;
   linkedinNote: string;
   questions: string[];
 };
@@ -49,6 +50,7 @@ export type Offer = {
 
 export type AppData = {
   profile: string;
+  letter: string;
   companies: Company[];
   offers: Offer[];
 };

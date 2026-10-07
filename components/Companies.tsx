@@ -4,7 +4,7 @@ import type { AppData, Company } from "@/lib/types";
 import { uid } from "@/lib/store";
 import { StatusSelect, withStatus, type Updater } from "./shared";
 
-const FILTERS = ["Toutes", "Prioritaires", "Banque", "Assurance", "Courtier", "Conseil banque-assurance", "Fintech", "En cours"];
+const FILTERS = ["Toutes", "Prioritaires", "Agence d'assurance", "Banque", "Assurance", "Courtier", "Conseil banque-assurance", "Fintech", "En cours"];
 const OPEN = ["sent", "relance", "interview", "offer"];
 
 function match(c: Company, f: string) {

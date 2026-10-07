@@ -1,7 +1,88 @@
 import type { Company } from "./types";
 
-// Liste de départ : 35 entreprises banque-assurance à Lyon (implantations à vérifier avant d'écrire).
+// Liste de départ : agences d'assurance et entreprises banque-assurance à Lyon (implantations à vérifier avant d'écrire).
 export const DEFAULT_COMPANIES: Company[] = [
+ {
+  "id": "mma-agences",
+  "name": "Agences MMA de la région lyonnaise",
+  "category": "Agence d'assurance",
+  "location": "Agents généraux MMA, Lyon et alentours",
+  "angle": "Candidature déjà transmise par l'inspectrice MMA sur recommandation de son ancien maître de stage : relancer et demander quelles agences sont intéressées",
+  "links": [
+   {
+    "label": "Agences MMA autour de Lyon",
+    "url": "https://www.google.com/maps/search/agence+MMA+Lyon"
+   }
+  ],
+  "priority": true,
+  "status": "sent",
+  "sentAt": "2026-10-06T10:11:00.000Z",
+  "note": "Candidature envoyée le 06/10 à l'inspectrice MMA (recommandation de l'agent général du stage). Relancer à J+7."
+ },
+ {
+  "id": "axa-agences",
+  "name": "Agences AXA (agents généraux)",
+  "category": "Agence d'assurance",
+  "location": "Lyon et métropole",
+  "angle": "Petites structures (moins de 250 salariés : aide de 2 000 €), profil collaborateur + digital recherché",
+  "links": [
+   {
+    "label": "Agences AXA autour de Lyon",
+    "url": "https://www.google.com/maps/search/agence+AXA+Lyon"
+   }
+  ],
+  "priority": true,
+  "status": "todo",
+  "note": ""
+ },
+ {
+  "id": "allianz-agences",
+  "name": "Agences Allianz (agents généraux)",
+  "category": "Agence d'assurance",
+  "location": "Lyon et métropole",
+  "angle": "Candidature directe à l'agent général, décision rapide",
+  "links": [
+   {
+    "label": "Agences Allianz autour de Lyon",
+    "url": "https://www.google.com/maps/search/agence+Allianz+Lyon"
+   }
+  ],
+  "priority": false,
+  "status": "todo",
+  "note": ""
+ },
+ {
+  "id": "generali-agences",
+  "name": "Agences Generali (agents généraux)",
+  "category": "Agence d'assurance",
+  "location": "Lyon et métropole",
+  "angle": "Agences indépendantes : l'agent signe lui-même le contrat",
+  "links": [
+   {
+    "label": "Agences Generali autour de Lyon",
+    "url": "https://www.google.com/maps/search/agence+Generali+Lyon"
+   }
+  ],
+  "priority": false,
+  "status": "todo",
+  "note": ""
+ },
+ {
+  "id": "gan-agences",
+  "name": "Agences GAN Assurances",
+  "category": "Agence d'assurance",
+  "location": "Lyon et métropole",
+  "angle": "Réseau d'agents généraux du groupe Groupama",
+  "links": [
+   {
+    "label": "Agences GAN autour de Lyon",
+    "url": "https://www.google.com/maps/search/agence+GAN+assurances+Lyon"
+   }
+  ],
+  "priority": false,
+  "status": "todo",
+  "note": ""
+ },
  {
   "id": "cace",
   "name": "Crédit Agricole Centre-Est",

@@ -16,6 +16,7 @@ function normalize(raw: Record<string, unknown>): Analysis {
     keywords: asList(raw.keywords),
     redFlags: asList(raw.redFlags),
     coverEmail: String(raw.coverEmail ?? ""),
+    coverLetter: String(raw.coverLetter ?? ""),
     linkedinNote: String(raw.linkedinNote ?? "").slice(0, 300),
     questions: asList(raw.questions),
   };
@@ -38,7 +39,7 @@ export async function POST(req: Request) {
     body: JSON.stringify({
       model: process.env.OPENAI_MODEL || "gpt-4o-mini",
       response_format: { type: "json_object" },
-      messages: [{ role: "user", content: buildPrompt(String(body.profile || ""), offer) }],
+      messages: [{ role: "user", content: buildPrompt(String(body.profile || ""), String(body.letter || ""), offer) }],
     }),
   });
 

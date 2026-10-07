@@ -20,7 +20,7 @@ export default function OfferAnalyzer({ data, update, onSaved }: { data: AppData
       const res = await fetch("/api/analyse", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ offer: form, profile: data.profile }),
+        body: JSON.stringify({ offer: form, profile: data.profile, letter: data.letter }),
       });
       const json = await res.json();
       if (res.status === 401) { window.location.href = "/login"; return; }

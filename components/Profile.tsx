@@ -38,8 +38,11 @@ export default function Profile({ data, update }: { data: AppData; update: Updat
     <section className="grid">
       <div className="panel">
         <h2>Mon profil</h2>
-        <p className="muted">L&apos;IA s&apos;appuie sur ce texte pour chaque analyse. Remplace les [à compléter] par tes vraies missions chez MMA, chiffrées si possible.</p>
+        <p className="muted">L&apos;IA s&apos;appuie sur ce texte pour chaque analyse. Ajoute ton téléphone à la dernière ligne et complète avec des résultats chiffrés quand tu en as.</p>
         <textarea id="p-profile" value={data.profile} onChange={(e) => update((d) => ({ ...d, profile: e.target.value }))} style={{ minHeight: 280 }} />
+        <h3>Lettre de motivation de base</h3>
+        <p className="muted">L&apos;IA l&apos;adapte à chaque offre en gardant ton style. Tes coordonnées (téléphone) restent dans ce navigateur.</p>
+        <textarea id="p-letter" value={data.letter} onChange={(e) => update((d) => ({ ...d, letter: e.target.value }))} style={{ minHeight: 280 }} />
       </div>
       <div className="panel">
         <div className="row"><h2>Fiche recruteur</h2><CopyButton text={FICHE} /></div>

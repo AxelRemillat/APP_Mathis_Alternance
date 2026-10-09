@@ -10,14 +10,15 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Candidature déjà transmise par l'inspectrice MMA sur recommandation de son ancien maître de stage : relancer et demander quelles agences sont intéressées",
   "links": [
    {
-    "label": "Agences MMA autour de Lyon",
-    "url": "https://www.google.com/maps/search/agence+MMA+Lyon"
+    "label": "Trouver une agence MMA près de Lyon",
+    "url": "https://agence.mma.fr/"
    }
   ],
   "priority": true,
   "status": "sent",
   "sentAt": "2026-10-06T10:11:00.000Z",
-  "note": "Candidature envoyée le 06/10 à l'inspectrice MMA (recommandation de l'agent général du stage). Relancer à J+7."
+  "note": "Candidature envoyée le 06/10 à l'inspectrice MMA (recommandation de l'agent général du stage). Relancer à J+7.",
+  "action": "Trouver une agence"
  },
  {
   "id": "axa-agences",
@@ -27,13 +28,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Petites structures (moins de 250 salariés : aide de 2 000 €), profil collaborateur + digital recherché",
   "links": [
    {
-    "label": "Agences AXA autour de Lyon",
-    "url": "https://www.google.com/maps/search/agence+AXA+Lyon"
+    "label": "Trouver un agent AXA près de Lyon",
+    "url": "https://agence.axa.fr/"
    }
   ],
   "priority": true,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Trouver une agence"
  },
  {
   "id": "allianz-agences",
@@ -43,13 +45,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Candidature directe à l'agent général, décision rapide",
   "links": [
    {
-    "label": "Agences Allianz autour de Lyon",
-    "url": "https://www.google.com/maps/search/agence+Allianz+Lyon"
+    "label": "Trouver un agent Allianz près de Lyon",
+    "url": "https://agences.allianz.fr/"
    }
   ],
   "priority": false,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Trouver une agence"
  },
  {
   "id": "generali-agences",
@@ -59,13 +62,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Agences indépendantes : l'agent signe lui-même le contrat",
   "links": [
    {
-    "label": "Agences Generali autour de Lyon",
-    "url": "https://www.google.com/maps/search/agence+Generali+Lyon"
+    "label": "Trouver un agent Generali près de Lyon",
+    "url": "https://agences.generali.fr/fr"
    }
   ],
   "priority": false,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Trouver une agence"
  },
  {
   "id": "gan-agences",
@@ -75,13 +79,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Réseau d'agents généraux du groupe Groupama",
   "links": [
    {
-    "label": "Agences GAN autour de Lyon",
-    "url": "https://www.google.com/maps/search/agence+GAN+assurances+Lyon"
+    "label": "Gan Assurances — trouver une agence",
+    "url": "https://www.gan.fr/"
    }
   ],
   "priority": false,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Trouver une agence"
  },
  {
   "id": "cace",
@@ -91,17 +96,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Siège régional : projets de transformation, data, risques, organisation",
   "links": [
    {
-    "label": "Site carrières du groupe",
-    "url": "https://groupecreditagricole.jobs/fr/"
-   },
-   {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20Cr%C3%A9dit%20Agricole%20Centre-Est&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Offres alternance Crédit Agricole · Lyon",
+    "url": "https://groupecreditagricole.jobs/fr/nos-offres/?contrat=alternance&localisation=Lyon"
    }
   ],
   "priority": true,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "lcl",
@@ -111,17 +113,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Filiale Crédit Agricole : candidatures via le même portail",
   "links": [
    {
-    "label": "Site carrières du groupe",
-    "url": "https://groupecreditagricole.jobs/fr/"
-   },
-   {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20LCL&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Offres du groupe Crédit Agricole (LCL)",
+    "url": "https://groupecreditagricole.jobs/fr/nos-offres/"
    }
   ],
   "priority": false,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "cera",
@@ -131,21 +130,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Siège régional BPCE : nombreuses fonctions support et projets",
   "links": [
    {
-    "label": "Portail BPCE",
-    "url": "https://recrutement.bpce.fr/"
-   },
-   {
-    "label": "La bonne alternance",
-    "url": "https://labonnealternance.apprentissage.beta.gouv.fr/emploi/recruteurs_lba/38400602901785/caisse-d-epargne-et-de-prevoyance-de-rhone-alpes"
-   },
-   {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20Caisse%20d%27Epargne%20Rh%C3%B4ne%20Alpes&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Offres BPCE filtrées alternance",
+    "url": "https://recrutement.bpce.fr/nos-offres?contrat=Alternance"
    }
   ],
   "priority": true,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "bpaura",
@@ -155,21 +147,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Siège régional BPCE : candidature spontanée possible via La bonne alternance",
   "links": [
    {
-    "label": "Portail BPCE",
-    "url": "https://recrutement.bpce.fr/"
-   },
-   {
-    "label": "La bonne alternance",
-    "url": "https://labonnealternance.apprentissage.beta.gouv.fr/emploi/recruteurs_lba/60552007102996/banque-populaire-auvergne-rhone-alpes"
-   },
-   {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20Banque%20Populaire%20Auvergne%20Rh%C3%B4ne%20Alpes&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Offres BPCE filtrées alternance",
+    "url": "https://recrutement.bpce.fr/nos-offres?contrat=Alternance"
    }
   ],
   "priority": true,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "cic",
@@ -179,17 +164,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Recrute des alternants bac+5 (conformité, chargé d'affaires) à Lyon",
   "links": [
    {
-    "label": "Portail Crédit Mutuel / CIC",
-    "url": "https://recrutement.creditmutuel.fr/"
-   },
-   {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20CIC%20Lyonnaise%20de%20Banque&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Recrutement Crédit Mutuel / CIC",
+    "url": "https://recrutement.creditmutuel.fr/fr/index.html"
    }
   ],
   "priority": true,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "cmse",
@@ -199,17 +181,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Même portail que le CIC : viser les fonctions siège",
   "links": [
    {
-    "label": "Portail Crédit Mutuel / CIC",
-    "url": "https://recrutement.creditmutuel.fr/"
-   },
-   {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20Cr%C3%A9dit%20Mutuel%20du%20Sud-Est&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Recrutement Crédit Mutuel Sud-Est",
+    "url": "https://recrutement.creditmutuel.fr/fr/index.html"
    }
   ],
   "priority": false,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "bnp",
@@ -219,17 +198,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Grand groupe : beaucoup d'offres alternance projet / PMO",
   "links": [
    {
-    "label": "Site carrières",
-    "url": "https://group.bnpparibas/emploi-carriere"
-   },
-   {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20BNP%20Paribas&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Offres BNP Paribas",
+    "url": "https://group.bnpparibas/emploi-carriere/nos-offres"
    }
   ],
   "priority": true,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "sg",
@@ -239,17 +215,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Grand groupe : offres alternance projet, conformité, data",
   "links": [
    {
-    "label": "Site carrières",
+    "label": "Carrières Société Générale",
     "url": "https://careers.societegenerale.com/"
-   },
-   {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20Soci%C3%A9t%C3%A9%20G%C3%A9n%C3%A9rale&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
    }
   ],
   "priority": true,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "lbp",
@@ -259,13 +232,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Bancassureur : projets réglementaires et digitaux",
   "links": [
    {
-    "label": "Offres LinkedIn à Lyon",
+    "label": "Alternances La Banque Postale · Lyon (LinkedIn)",
     "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20La%20Banque%20Postale&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
    }
   ],
   "priority": false,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "bpi",
@@ -275,17 +249,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Recrute plusieurs centaines d'alternants par an en France",
   "links": [
    {
-    "label": "Page JobTeaser",
-    "url": "https://www.jobteaser.com/fr/companies/bpifrance/newsfeed"
-   },
-   {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20Bpifrance&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Offres Bpifrance",
+    "url": "https://www.welcometothejungle.com/fr/companies/bpifrance/jobs"
    }
   ],
   "priority": false,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "bdf",
@@ -295,13 +266,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Profil ingénieur + gestion de projet apprécié (risques, data)",
   "links": [
    {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20Banque%20de%20France&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Nous rejoindre — Banque de France",
+    "url": "https://www.banque-france.fr/fr/nous-rejoindre"
    }
   ],
   "priority": false,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "april",
@@ -311,17 +283,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Assureur-courtier lyonnais : IT, data, projets, relation client",
   "links": [
    {
-    "label": "La bonne alternance",
+    "label": "Alternances April (La Bonne Alternance)",
     "url": "https://labonnealternance.apprentissage.beta.gouv.fr/emploi/recruteurs_lba/33839943900151/april-entreprise"
-   },
-   {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20APRIL&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
    }
   ],
   "priority": true,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Candidature spontanée"
  },
  {
   "id": "apicil",
@@ -331,17 +300,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Groupe de protection sociale lyonnais : épargne, santé, retraite",
   "links": [
    {
-    "label": "La bonne alternance",
-    "url": "https://labonnealternance.apprentissage.beta.gouv.fr/emploi/recruteurs_lba/44083994200065/apicil-epargne"
-   },
-   {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20APICIL&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Carrières Apicil",
+    "url": "https://www.apicil.com/groupe/carrieres/"
    }
   ],
   "priority": true,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "groupama",
@@ -351,17 +317,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Caisse régionale : siège avec fonctions projet et pilotage",
   "links": [
    {
-    "label": "La bonne alternance",
-    "url": "https://labonnealternance.apprentissage.beta.gouv.fr/emploi/recruteurs_lba/77983836601109/groupama-rhone-alpes-auvergne"
-   },
-   {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20Groupama%20Rh%C3%B4ne-Alpes%20Auvergne&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Offres Groupama / Gan",
+    "url": "https://www.groupama-gan-recrute.com/nos-offres/"
    }
   ],
   "priority": true,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "covea",
@@ -371,17 +334,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Son terrain : 3 stages chez MMA, à activer par ses tuteurs",
   "links": [
    {
-    "label": "Offres alternance Covéa (DogFinance)",
-    "url": "https://dogfinance.com/ent/groupe-covea/le-groupe-covea-recrute-des-alternants-dans-le-domaine-de-la-comptabilite-de-la-gestion-et-de-la-finance"
-   },
-   {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20Cov%C3%A9a&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Covéa recrute (MMA, MAAF, GMF)",
+    "url": "https://www.covea.com/fr/covea-recrute"
    }
   ],
   "priority": true,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "axa",
@@ -391,17 +351,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Grand groupe : alternance projet, actuariat, data",
   "links": [
    {
-    "label": "Site recrutement",
-    "url": "https://recrutement.axa.fr/"
-   },
-   {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20AXA%20France&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Offres AXA France",
+    "url": "https://recrutement.axa.fr/nos-offres"
    }
   ],
   "priority": true,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "allianz",
@@ -411,13 +368,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Grand groupe : projets, souscription, pilotage",
   "links": [
    {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20Allianz%20France&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Carrières Allianz",
+    "url": "https://careers.allianz.com/global/en"
    }
   ],
   "priority": false,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "generali",
@@ -427,17 +385,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Publie ses offres sur Engagement Jeunes et JobTeaser",
   "links": [
    {
-    "label": "Page Engagement Jeunes",
-    "url": "https://www.engagement-jeunes.com/fr/company/79/generali-france.html"
-   },
-   {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20Generali%20France&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Nous rejoindre — Generali France",
+    "url": "https://www.generali.fr/institutionnel/nous-rejoindre/"
    }
   ],
   "priority": false,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "ag2r",
@@ -447,17 +402,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Plus de 300 alternants recrutés par an",
   "links": [
    {
-    "label": "Offres en alternance",
+    "label": "Offres en alternance AG2R La Mondiale",
     "url": "https://www.ag2rlamondiale.fr/recrutement/nos-offres-en-alternance"
-   },
-   {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20AG2R%20La%20Mondiale&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
    }
   ],
   "priority": true,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "malakoff",
@@ -467,13 +419,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Protection sociale : projets de transformation",
   "links": [
    {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20Malakoff%20Humanis&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Malakoff Humanis",
+    "url": "https://www.malakoffhumanis.com/"
    }
   ],
   "priority": false,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Candidature spontanée"
  },
  {
   "id": "macif",
@@ -483,13 +436,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Mutuelle : projets et relation sociétaires",
   "links": [
    {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20MACIF&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Recrutement Macif",
+    "url": "https://www.macif.fr/assurance/particuliers/a-propos/recrutement"
    }
   ],
   "priority": false,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "harmonie",
@@ -499,13 +453,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Mutuelle santé : pilotage, data, projets",
   "links": [
    {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20Harmonie%20Mutuelle&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Annonces Harmonie Mutuelle",
+    "url": "https://recrutement.harmonie-mutuelle.fr/fr/annonces"
    }
   ],
   "priority": false,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "swisslife",
@@ -515,13 +470,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Assurance vie et patrimoine",
   "links": [
    {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20Swiss%20Life%20France&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Nous rejoindre — Swiss Life",
+    "url": "https://www.swisslife.fr/Swisslife-et-moi/Nous-rejoindre"
    }
   ],
   "priority": false,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "alptis",
@@ -531,13 +487,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Acteur lyonnais santé-prévoyance, taille humaine",
   "links": [
    {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20Alptis&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Alptis (Lyon)",
+    "url": "https://www.alptis.org/"
    }
   ],
   "priority": false,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Candidature spontanée"
  },
  {
   "id": "wtw",
@@ -547,13 +504,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Courtage entreprises : gestion de projets clients",
   "links": [
    {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20WTW&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Carrières WTW",
+    "url": "https://careers.wtwco.com/"
    }
   ],
   "priority": false,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "marsh",
@@ -563,13 +521,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Courtage entreprises et risques",
   "links": [
    {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20Marsh&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Carrières Marsh",
+    "url": "https://careers.marsh.com/global/en"
    }
   ],
   "priority": false,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "diot",
@@ -579,13 +538,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Courtage : projets et outils de gestion",
   "links": [
    {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20Diot-Siaci&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Carrières Diot-Siaci",
+    "url": "https://diot-siaci.com/fr/carrieres/"
    }
   ],
   "priority": false,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "verspieren",
@@ -595,13 +555,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Courtier familial, fonctions projet",
   "links": [
    {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20Verspieren&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Nous rejoindre — Verspieren",
+    "url": "https://www.verspieren.com/fr/nous-rejoindre/"
    }
   ],
   "priority": false,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "aon",
@@ -611,13 +572,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Courtage et conseil en risques",
   "links": [
    {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20Aon&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Offres Aon",
+    "url": "https://jobs.aon.com/"
    }
   ],
   "priority": false,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "wavestone",
@@ -627,13 +589,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Cabinet de conseil : missions banque-assurance, profil projet idéal",
   "links": [
    {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20Wavestone&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Offres Wavestone",
+    "url": "https://www.wavestone.com/fr/carrieres/nos-offres/"
    }
   ],
   "priority": false,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "sopra",
@@ -643,13 +606,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Projets IT pour banques et assureurs (MOA, PMO)",
   "links": [
    {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20Sopra%20Steria&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Offres Sopra Steria",
+    "url": "https://www.soprasteria.fr/carriere/nos-offres-d-emploi"
    }
   ],
   "priority": false,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "capgemini",
@@ -659,13 +623,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Services financiers : PMO, data, transformation",
   "links": [
    {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20Capgemini&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Offres Capgemini",
+    "url": "https://www.capgemini.com/fr-fr/carrieres/rejoignez-nous/nos-offres-demploi/"
    }
   ],
   "priority": false,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "cgi",
@@ -675,13 +640,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Projets bancaires et assurance",
   "links": [
    {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20CGI&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "CGI France — carrières",
+    "url": "https://www.cgi.com/france/fr-fr"
    }
   ],
   "priority": false,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  },
  {
   "id": "indy",
@@ -691,13 +657,14 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Fintech lyonnaise (comptabilité des indépendants)",
   "links": [
    {
-    "label": "Offres LinkedIn à Lyon",
-    "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20Indy&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
+    "label": "Indy (Lyon) — recrutement",
+    "url": "https://www.welcometothejungle.com/fr/companies/indy"
    }
   ],
   "priority": false,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Candidature spontanée"
  },
  {
   "id": "cegid",
@@ -707,12 +674,13 @@ export const DEFAULT_COMPANIES: Company[] = [
   "angle": "Éditeur de logiciels de gestion et finance",
   "links": [
    {
-    "label": "Offres LinkedIn à Lyon",
+    "label": "Alternances Cegid · Lyon (LinkedIn)",
     "url": "https://www.linkedin.com/jobs/search/?keywords=alternance%20Cegid&location=Lyon%2C%20Auvergne-Rh%C3%B4ne-Alpes%2C%20France"
    }
   ],
   "priority": false,
   "status": "todo",
-  "note": ""
+  "note": "",
+  "action": "Postuler en ligne"
  }
 ];

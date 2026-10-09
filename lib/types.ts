@@ -9,6 +9,9 @@ export const STATUSES: { id: Status; label: string }[] = [
   { id: "no", label: "Refus" },
 ];
 
+/** Ce qu'on fait concrètement chez cette entreprise, et donc quel lien suivre. */
+export type CompanyAction = "Postuler en ligne" | "Candidature spontanée" | "Trouver une agence";
+
 export type Company = {
   id: string;
   name: string;
@@ -16,6 +19,8 @@ export type Company = {
   location: string;
   angle: string;
   links: { label: string; url: string }[];
+  /** Absent sur les entreprises ajoutées à la main avant ce champ. */
+  action?: CompanyAction;
   priority: boolean;
   status: Status;
   note: string;
@@ -51,6 +56,8 @@ export type Offer = {
 export type AppData = {
   profile: string;
   letter: string;
+  /** Noms des plateformes où l'inscription est faite (étape 1). */
+  signups?: string[];
   companies: Company[];
   offers: Offer[];
 };

@@ -3,7 +3,8 @@ import { useState } from "react";
 import type { AppData } from "@/lib/types";
 import { daysSince } from "@/lib/store";
 import AnalysisView from "./AnalysisView";
-import { StatusSelect, withStatus, type Updater } from "./shared";
+import { CopyButton, StatusSelect, withStatus, type Updater } from "./shared";
+import { buildClaudePrompt } from "@/lib/claudePrompt";
 
 export default function OfferList({ data, update }: { data: AppData; update: Updater }) {
   const [open, setOpen] = useState<string | null>(null);
@@ -35,6 +36,10 @@ export default function OfferList({ data, update }: { data: AppData; update: Upd
               <button className="ghost" onClick={() => setOpen(open === o.id ? null : o.id)}>
                 {open === o.id ? "Masquer" : "Voir l'analyse"}
               </button>
+              <CopyButton
+                text={buildClaudePrompt({ profile: data.profile, letter: data.letter, offer: o, analysis: o.analysis })}
+                label="Prompt pour Claude"
+              />
               {confirm === o.id ? (
                 <button className="danger" onClick={() => remove(o.id)}>Confirmer la suppression</button>
               ) : (

@@ -82,7 +82,7 @@ export default function FeedbackFlag({ page }: { page: string }) {
             Page : <b>{page}</b> · {note.length}/2000
           </p>
           {state === "sent" ? (
-            <p style={{ margin: 0 }}>Merci, c&apos;est envoyé à Axel.</p>
+            <p style={{ margin: 0 }}>Merci, c&apos;est bien reçu — ta remarque est transmise pour amélioration.</p>
           ) : (
             <div className="row">
               <button onClick={send} disabled={state === "sending" || !note.trim()}>

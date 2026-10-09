@@ -1,5 +1,9 @@
 node_modules
 .next
+.env
 .env*.local
 .vercel
 *.tsbuildinfo
+# Depot PUBLIC : aucun fichier de contacts ne doit jamais y entrer.
+# Les adresses vivent dans la variable d'environnement TARGET_CONTACTS.
+*contacts*.json

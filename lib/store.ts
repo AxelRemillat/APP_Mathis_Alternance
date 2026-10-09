@@ -12,6 +12,7 @@ const initial = (): AppData => ({
   companies: DEFAULT_COMPANIES,
   offers: [],
   signups: [],
+  analyses: [],
 });
 
 // Données stockées dans le navigateur (un seul utilisateur). Export/import JSON pour sauvegarder.

@@ -41,6 +41,18 @@ export type Analysis = {
   questions: string[];
 };
 
+/**
+ * Une analyse telle que Mathis la retrouve : les champs saisis ET le resultat.
+ * Sans les champs, reouvrir une analyse ne redonnerait ni le texte de
+ * l annonce ni le prompt a copier — donc rien d exploitable.
+ */
+export type SavedAnalysis = {
+  id: string;
+  createdAt: string;
+  offer: { company: string; title: string; url: string; text: string };
+  analysis: Analysis;
+};
+
 export type Offer = {
   id: string;
   title: string;
@@ -60,4 +72,6 @@ export type AppData = {
   signups?: string[];
   companies: Company[];
   offers: Offer[];
+  /** Les 50 analyses les plus recentes, la derniere en tete. */
+  analyses?: SavedAnalysis[];
 };

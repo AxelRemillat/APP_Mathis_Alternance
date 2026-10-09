@@ -9,6 +9,7 @@ import OfferList from "@/components/OfferList";
 import Companies from "@/components/Companies";
 import Platforms from "@/components/Platforms";
 import Profile from "@/components/Profile";
+import FeedbackFlag from "@/components/FeedbackFlag";
 
 /*
  * La navigation suit le parcours, dans l'ordre et numérotée : avant, les six
@@ -48,6 +49,13 @@ export default function Home() {
             {t.label}
           </button>
         ))}
+        {/* Le drapeau est a droite de la navigation, donc present partout :
+            une remarque se note au moment ou on la pense, pas apres l avoir
+            cherchee. `marginLeft: auto` le pousse a droite quand la barre
+            tient sur une ligne ; a 360 px il passe simplement a la ligne. */}
+        <div style={{ marginLeft: "auto" }}>
+          <FeedbackFlag page={TABS.find((t) => t.id === tab)?.label ?? tab} />
+        </div>
       </nav>
       {!ready ? (
         <p className="muted">Chargement…</p>

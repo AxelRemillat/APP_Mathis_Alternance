@@ -8,7 +8,7 @@ Dates : 470 h sur 12 mois, du 12 octobre 2026 au 30 septembre 2027.
 Rythme : 1 jour de cours / 4 jours en entreprise par semaine + 7 semaines complètes de cours (12–16 oct., 16–20 nov., 7–11 déc., 11–15 janv., 8–12 févr., 8–12 mars, 30 mars–2 avr.). 100 % en entreprise de mi-juin à fin septembre 2027.
 Coût : 11 040 € par an, dont environ 9 700 € pris en charge par l'OPCO (reste ≈ 1 340 €).
 Aide de l'État (bac+5, contrat signé avant le 31/12/2026) : 750 € (250 salariés et plus) ou 2 000 € (moins de 250).
-Contact école : Cassandre Berrah, relations entreprises ISG Lyon, 04 84 34 02 55, cassandre.berrah@isg.fr.`;
+Contact école : relations entreprises ISG Lyon (nom, téléphone et adresse dans tes notes — pas ici, le dépôt est public).`;
 
 export default function Profile({ data, update }: { data: AppData; update: Updater }) {
   const [msg, setMsg] = useState("");

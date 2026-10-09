@@ -1,8 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { AppData, Company } from "@/lib/types";
 import { uid } from "@/lib/store";
-import { StatusSelect, withStatus, type Updater } from "./shared";
+import { CopyButton, StatusSelect, withStatus, type Updater } from "./shared";
+import { buildSpontaneousPrompt } from "@/lib/claudePrompt";
 
 const FILTERS = ["Toutes", "Prioritaires", "Agence d'assurance", "Banque", "Assurance", "Courtier", "Conseil banque-assurance", "Fintech", "En cours"];
 const OPEN = ["sent", "relance", "interview", "offer"];
@@ -17,6 +18,18 @@ function match(c: Company, f: string) {
 
 export default function Companies({ data, update }: { data: AppData; update: Updater }) {
   const [filter, setFilter] = useState("Toutes");
+  /*
+   * Contacts des petites structures : ils ne sont PAS dans le code (depot
+   * public) mais dans TARGET_CONTACTS cote serveur, servis par une route que
+   * le middleware protege. Absents, la liste marche pareil.
+   */
+  const [contacts, setContacts] = useState<Record<string, { email: string; role?: string }[]>>({});
+  useEffect(() => {
+    fetch("/api/contacts")
+      .then((response) => (response.ok ? response.json() : { contacts: {} }))
+      .then((json) => setContacts(json.contacts ?? {}))
+      .catch(() => setContacts({}));
+  }, []);
   const [name, setName] = useState("");
   const patch = (id: string, fn: (c: Company) => Company) =>
     update((d) => ({ ...d, companies: d.companies.map((c) => (c.id === id ? fn(c) : c)) }));
@@ -57,6 +70,18 @@ export default function Companies({ data, update }: { data: AppData; update: Upd
             {c.links.map((l) => (
               <a key={l.url} href={l.url} target="_blank" rel="noopener noreferrer">{l.label}</a>
             ))}
+            {c.action && <span className="tag">{c.action}</span>}
+            {(contacts[c.id] ?? []).map((contact) => (
+              <a key={contact.email} href={`mailto:${contact.email}`}>
+                {contact.role ? `Écrire — ${contact.role}` : "Écrire"}
+              </a>
+            ))}
+            {/* Candidature spontanee : aucune annonce a analyser, donc un
+                prompt qui ne s appuie que sur l entreprise et l angle repere. */}
+            <CopyButton
+              text={buildSpontaneousPrompt({ profile: data.profile, letter: data.letter, company: c })}
+              label="Copier le prompt pour Claude"
+            />
           </div>
           <input
             id={`cn-${c.id}`}

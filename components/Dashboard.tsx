@@ -51,12 +51,12 @@ export default function Dashboard({ data, go }: { data: AppData; go: (tab: strin
               <li key={c.id}>{c.name}</li>
             ))}
           </ul>
-          <button className="ghost" onClick={() => go("companies")}>Voir toutes les entreprises</button>
+          <button className="ghost" onClick={() => go("apply")}>Voir toutes les entreprises</button>
         </div>
         <div className="panel">
           <h2>Une offre à analyser ?</h2>
           <p className="muted">Colle le texte d&apos;une annonce : l&apos;IA note l&apos;adéquation et rédige ton e-mail et ta note LinkedIn.</p>
-          <button onClick={() => go("analyse")}>Analyser une offre</button>
+          <button onClick={() => go("write")}>Analyser une offre</button>
         </div>
       </div>
     </section>

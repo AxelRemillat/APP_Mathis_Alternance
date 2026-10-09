@@ -1,20 +1,26 @@
 "use client";
 import { useState } from "react";
 import { useAppData } from "@/lib/store";
-import Dashboard from "@/components/Dashboard";
+import { STEPS } from "@/lib/steps";
+import Start from "@/components/Start";
+import Signup from "@/components/Signup";
 import OfferAnalyzer from "@/components/OfferAnalyzer";
 import OfferList from "@/components/OfferList";
 import Companies from "@/components/Companies";
 import Platforms from "@/components/Platforms";
 import Profile from "@/components/Profile";
 
+/*
+ * La navigation suit le parcours, dans l'ordre et numérotée : avant, les six
+ * onglets se ressemblaient et rien ne disait par quoi commencer. « Mon suivi »
+ * et « Profil » viennent après, séparés : ils accompagnent le parcours, ils
+ * n'en font pas partie.
+ */
 const TABS = [
-  { id: "home", label: "Tableau de bord" },
-  { id: "analyse", label: "Analyser une offre" },
-  { id: "offers", label: "Mes offres" },
-  { id: "companies", label: "Entreprises" },
-  { id: "platforms", label: "Plateformes" },
-  { id: "profile", label: "Profil & fiche" },
+  { id: "home", label: "Par où commencer" },
+  ...STEPS.map((step) => ({ id: step.id, label: step.label })),
+  { id: "offers", label: "Mon suivi" },
+  { id: "profile", label: "Profil" },
 ] as const;
 type Tab = (typeof TABS)[number]["id"];
 
@@ -36,7 +42,7 @@ export default function Home() {
           <button className="ghost" onClick={logout}>Se déconnecter</button>
         </div>
       </header>
-      <nav className="tabs" aria-label="Sections">
+      <nav className="tabs" aria-label="Parcours">
         {TABS.map((t) => (
           <button key={t.id} aria-current={tab === t.id ? "page" : undefined} onClick={() => setTab(t.id)}>
             {t.label}
@@ -47,11 +53,12 @@ export default function Home() {
         <p className="muted">Chargement…</p>
       ) : (
         <>
-          {tab === "home" && <Dashboard data={data} go={(t) => setTab(t as Tab)} />}
-          {tab === "analyse" && <OfferAnalyzer data={data} update={update} onSaved={() => setTab("offers")} />}
+          {tab === "home" && <Start data={data} go={(t) => setTab(t as Tab)} />}
+          {tab === "signup" && <Signup data={data} update={update} />}
+          {tab === "apply" && <Companies data={data} update={update} />}
+          {tab === "find" && <Platforms />}
+          {tab === "write" && <OfferAnalyzer data={data} update={update} onSaved={() => setTab("offers")} />}
           {tab === "offers" && <OfferList data={data} update={update} />}
-          {tab === "companies" && <Companies data={data} update={update} />}
-          {tab === "platforms" && <Platforms />}
           {tab === "profile" && <Profile data={data} update={update} />}
         </>
       )}

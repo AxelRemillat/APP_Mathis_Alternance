@@ -68,3 +68,53 @@ RÈGLES, elles comptent autant que le reste :
     .filter((block) => block.trim() !== "")
     .join("\n\n");
 }
+
+/**
+ * Prompt de CANDIDATURE SPONTANÉE : il n'y a pas d'annonce, donc rien à
+ * analyser — seulement une entreprise, son métier et l'angle qu'on a repéré.
+ * La demande est volontairement plus courte que celle d'une offre : sans
+ * annonce, un modèle qui écrit long invente.
+ */
+export function buildSpontaneousPrompt(input: {
+  profile: string;
+  letter: string;
+  company: { name: string; category: string; location: string; angle: string; action?: string | null };
+}): string {
+  const { profile, letter, company } = input;
+  return [
+    "Tu m'aides à préparer une candidature SPONTANÉE en alternance — il n'y a pas d'annonce. Réponds en français, en texte structuré avec des titres.",
+    section("MON PROFIL", profile),
+    section("MA LETTRE TYPE (ma voix : garde-la, adapte-la)", letter),
+    section(
+      "L'ENTREPRISE",
+      [
+        `Nom : ${company.name}`,
+        `Secteur : ${company.category}`,
+        `Lieu : ${company.location}`,
+        company.angle ? `Mon angle d'approche : ${company.angle}` : "",
+        company.action ? `Ce que je peux faire chez eux : ${company.action}` : "",
+      ]
+        .filter(Boolean)
+        .join("\n"),
+    ),
+    `CE QUE JE TE DEMANDE :
+
+1. EST-CE PERTINENT ? Deux à quatre lignes : ce que cette entreprise fait, pourquoi mon profil peut l'intéresser, et ce qui risque de coincer. Si l'angle est faible, dis-le.
+
+2. UNE LETTRE DE CANDIDATURE SPONTANÉE de 250 à 320 mots. Sans annonce, appuie-toi sur mon angle et sur ce que fait l'entreprise — jamais sur un besoin que tu lui supposes. Ouvre par « Madame, Monsieur, ».
+
+3. UN E-MAIL COURT de 110 à 150 mots, « Bonjour, », une accroche liée à l'entreprise, une preuve prise dans mon profil, mon rythme d'alternance, une demande d'échange, ma signature.
+
+4. UNE NOTE LINKEDIN de moins de 300 caractères, signature comprise, pour un recruteur ou un dirigeant de cette entreprise. Compte les caractères et donne le nombre entre parenthèses.
+
+5. DEUX QUESTIONS à poser lors d'un premier échange, qui montrent que je me suis renseigné.
+
+RÈGLES :
+- N'invente RIEN : ni expérience de mon côté, ni besoin du leur. Si tu ne sais pas, écris [à compléter].
+- Pas de superlatifs invérifiables, pas de flatterie de l'entreprise.
+- Vouvoiement, ton sobre, phrases simples.
+- Une candidature spontanée se lit en vingt secondes : va droit au fait.`,
+  ]
+    .filter((block) => block.trim() !== "")
+    .join("\n\n");
+}

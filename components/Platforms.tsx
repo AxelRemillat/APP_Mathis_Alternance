@@ -1,5 +1,6 @@
 "use client";
-import { KEYWORDS, LINKEDIN_QUERY, PLATFORMS, PROFILE_KIT, ROUTINE, type Platform } from "@/lib/platforms";
+import { KEYWORDS, LINKEDIN_QUERY, PROFILE_KIT, ROUTINE, type Platform } from "@/lib/platforms";
+import { SEARCH_PLATFORMS } from "@/lib/steps";
 import { CopyButton } from "./shared";
 
 const stars = (n: number) => "★".repeat(n) + "☆".repeat(3 - n);
@@ -89,7 +90,9 @@ export default function Platforms() {
     <section className="stack">
       <Routine />
       <div className="grid">
-        {PLATFORMS.map((p) => <PlatformCard key={p.name} p={p} />)}
+        {/* Étape 3 : les sources secondaires. Celles qui méritent un compte
+            sont à l étape 1, avec leur case « Inscrit ». */}
+        {SEARCH_PLATFORMS.map((p) => <PlatformCard key={p.name} p={p} />)}
       </div>
       <div className="grid">
         <ProfileKit />

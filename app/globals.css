@@ -56,6 +56,10 @@ label { font-size: 14px; color: var(--muted); display: grid; gap: 4px; }
 .alert { padding: 10px 12px; border-radius: 6px; background: var(--gold-soft); color: var(--ink); }
 .error { padding: 10px 12px; border-radius: 6px; background: var(--bad-soft); color: var(--bad); }
 pre.text { white-space: pre-wrap; font: 400 15px/1.55 var(--f-body); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 12px; margin: 0; }
-ul.clean { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+ul.clean, ol.clean { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+/* Plateformes : les liens et mots-clés longs passent à la ligne (pas de défilement horizontal sur téléphone). */
+.links a, .keywords span, pre.text { overflow-wrap: anywhere; }
+.keywords li { flex-wrap: nowrap; }
+.keywords li span { min-width: 0; }
 .filters button { background: var(--surface); color: var(--ink); border-color: var(--line); font-weight: 400; }
 .filters button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }

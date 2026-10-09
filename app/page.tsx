@@ -5,6 +5,7 @@ import Dashboard from "@/components/Dashboard";
 import OfferAnalyzer from "@/components/OfferAnalyzer";
 import OfferList from "@/components/OfferList";
 import Companies from "@/components/Companies";
+import Platforms from "@/components/Platforms";
 import Profile from "@/components/Profile";
 
 const TABS = [
@@ -12,6 +13,7 @@ const TABS = [
   { id: "analyse", label: "Analyser une offre" },
   { id: "offers", label: "Mes offres" },
   { id: "companies", label: "Entreprises" },
+  { id: "platforms", label: "Plateformes" },
   { id: "profile", label: "Profil & fiche" },
 ] as const;
 type Tab = (typeof TABS)[number]["id"];
@@ -49,6 +51,7 @@ export default function Home() {
           {tab === "analyse" && <OfferAnalyzer data={data} update={update} onSaved={() => setTab("offers")} />}
           {tab === "offers" && <OfferList data={data} update={update} />}
           {tab === "companies" && <Companies data={data} update={update} />}
+          {tab === "platforms" && <Platforms />}
           {tab === "profile" && <Profile data={data} update={update} />}
         </>
       )}

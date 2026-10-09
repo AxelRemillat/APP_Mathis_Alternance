@@ -54,7 +54,7 @@ export function buildClaudePrompt(input: {
 
 3. UN E-MAIL DE CANDIDATURE court : 120 à 170 mots, « Bonjour, » puis une accroche liée à l'annonce, une preuve prise dans mon profil, mon rythme d'alternance, une demande d'échange, et ma signature.
 
-4. UNE NOTE LINKEDIN pour le recruteur, moins de 300 caractères, signe comprise. Compte-les et donne le nombre entre parenthèses à la fin.
+4. UNE NOTE LINKEDIN pour le recruteur, moins de 300 caractères, signature comprise. Compte-les et donne le nombre entre parenthèses à la fin.
 
 5. TROIS QUESTIONS PROBABLES EN ENTRETIEN pour ce poste, chacune suivie d'une piste de réponse tirée de mon profil — pas une réponse générique, une réponse qui s'appuie sur ce que j'ai vraiment fait.
 

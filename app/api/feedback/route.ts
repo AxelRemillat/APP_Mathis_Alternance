@@ -1,11 +1,15 @@
 import { NextResponse } from "next/server";
 
 /**
- * Remarque de Mathis → fiche courte → notification ntfy chez Axel.
+ * Remarque de Mathis → fiche courte → webhook n8n.
+ *
+ * Le canal a changé le 09/10/2026 : plus de notification sur le téléphone
+ * d'Axel. Les remarques partent dans un workflow n8n qui les enregistre et
+ * les met en file chez l'agent qui code — c'est là qu'elles servent.
  *
  * Derrière le middleware : sans session valide, la réponse est un 401 avant
- * d'arriver ici. Le topic ntfy n'est JAMAIS dans le code — le dépôt est
- * public, et un topic ntfy connu se lit par n'importe qui.
+ * d'arriver ici. Ni l'URL du webhook ni son secret ne figurent dans le code :
+ * le dépôt est public.
  *
  * Si l'IA ne répond pas, la remarque part quand même, en « non classé ». Une
  * remarque perdue est pire qu'une remarque mal rangée.
@@ -14,6 +18,7 @@ export const runtime = "nodejs";
 
 const MAX_CHARS = 2_000;
 const MAX_PER_DAY = 20;
+const TIMEOUT_MS = 10_000;
 
 /**
  * Compteur en mémoire du processus. Volontairement simple : il s'agit
@@ -29,7 +34,7 @@ function overQuota(now = Date.now()): boolean {
   return sent.length >= MAX_PER_DAY;
 }
 
-const TYPES = ["bug", "idée", "UX", "contenu"] as const;
+const TYPES = ["bug", "idée", "ux", "contenu"] as const;
 const PRIORITIES = ["haute", "moyenne", "basse"] as const;
 
 interface Card {
@@ -72,7 +77,7 @@ Réponds UNIQUEMENT en JSON :
     const json = await response.json();
     const raw = JSON.parse(json.choices?.[0]?.message?.content ?? "{}") as Record<string, unknown>;
     return {
-      type: pick(raw.type, TYPES.map((item) => item.toLowerCase()), "non classé"),
+      type: pick(raw.type, TYPES, "non classé"),
       page: typeof raw.page === "string" && raw.page.trim() ? raw.page.trim() : page || "non précisée",
       priority: pick(raw.priority, PRIORITIES, "moyenne"),
       summary: typeof raw.summary === "string" ? raw.summary.trim() : "",
@@ -84,10 +89,11 @@ Réponds UNIQUEMENT en JSON :
 }
 
 export async function POST(req: Request): Promise<NextResponse> {
-  const topic = process.env.FEEDBACK_NTFY_TOPIC?.trim();
-  if (!topic) {
+  const url = process.env.FEEDBACK_WEBHOOK_URL?.trim();
+  const secret = process.env.FEEDBACK_WEBHOOK_SECRET?.trim();
+  if (!url || !secret) {
     return NextResponse.json(
-      { error: "Le canal de notification n'est pas configuré : ajoute FEEDBACK_NTFY_TOPIC côté serveur." },
+      { error: "Le canal de feedback n'est pas configuré (FEEDBACK_WEBHOOK_URL / FEEDBACK_WEBHOOK_SECRET)." },
       { status: 500 },
     );
   }
@@ -104,31 +110,41 @@ export async function POST(req: Request): Promise<NextResponse> {
   }
 
   const card = await classify(note, page);
-  const type = card?.type ?? "non classé";
-  const priority = card?.priority ?? "moyenne";
-  // La fiche d abord, la remarque brute ensuite : Axel lit le resume, et garde
-  // sous les yeux les mots exacts de Mathis.
-  const head = [
-    card?.summary ? `Résumé : ${card.summary}` : "",
-    card?.action ? `Action : ${card.action}` : "",
-    `Page : ${card?.page || page || "non précisée"}`,
-  ].filter(Boolean);
-  const lines = [...head, "", "Remarque de Mathis :", note];
-
-  const push = await fetch(`https://ntfy.sh/${encodeURIComponent(topic)}`, {
-    method: "POST",
-    headers: {
-      // En-têtes ntfy : ASCII seulement, d'où l'absence d'accents dans le titre.
-      Title: `Feedback app Mathis - ${type}/${priority}`,
-      Priority: priority === "haute" ? "4" : priority === "basse" ? "2" : "3",
-      Tags: "triangular_flag_on_post",
+  /*
+   * Corps attendu par le workflow n8n, au mot près — clés `priorite`,
+   * `resume` sans accent, valeurs en texte simple. Le texte brut est envoyé
+   * TEL QUEL à côté de la fiche : la fiche aide à trier, les mots de Mathis
+   * sont ce qu'il faut lire pour corriger.
+   */
+  const payload = {
+    raw: note,
+    page: page || card?.page || "non précisée",
+    at: new Date().toISOString(),
+    fiche: {
+      type: card?.type ?? "non classé",
+      priorite: card?.priority ?? "moyenne",
+      resume: card?.summary ?? "",
+      action: card?.action ?? "",
     },
-    body: lines.join("\n"),
-    signal: AbortSignal.timeout(15_000),
-  }).catch(() => null);
+  };
 
-  if (!push?.ok) {
-    return NextResponse.json({ error: "La notification n'est pas partie : réessaie dans un instant." }, { status: 502 });
+  // Délai borné à la main : un webhook muet ne doit pas tenir la page.
+  const abort = new AbortController();
+  const timer = setTimeout(() => abort.abort(), TIMEOUT_MS);
+  const posted = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "x-feedback-secret": secret },
+    body: JSON.stringify(payload),
+    signal: abort.signal,
+  })
+    .catch(() => null)
+    .finally(() => clearTimeout(timer));
+
+  if (!posted?.ok) {
+    return NextResponse.json(
+      { error: "La remarque n'est pas partie : réessaie dans un instant, ton texte est conservé." },
+      { status: 502 },
+    );
   }
   sent.push(Date.now());
   return NextResponse.json({ ok: true, classified: Boolean(card) });

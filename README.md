@@ -31,9 +31,9 @@ Les données restent dans le navigateur (localStorage). Exporter régulièrement
 
 À droite de la navigation, sur toutes les pages, un bouton **🚩 Signaler**. Il ouvre une petite fenêtre : la remarque, la page en cours pré-remplie, et « Envoyer ». La remarque part vers `/api/feedback`, qui exige une session.
 
-Côté serveur, le modèle range la remarque en fiche courte — type (bug / idée / UX / contenu), page, priorité, résumé, action proposée — puis une notification **ntfy** arrive chez Axel, avec la fiche **et** les mots exacts de Mathis. Si le modèle ne répond pas, la remarque part quand même, en « non classé » : une remarque perdue est pire qu’une remarque mal rangée. Plafond de 20 envois par jour, 2 000 caractères par remarque.
+Côté serveur, le modèle range la remarque en fiche courte — type (bug / idée / UX / contenu), page, priorité, résumé, action proposée — puis un **POST JSON vers un workflow n8n** l’enregistre et la met en file chez l’agent qui code. Le corps envoyé porte la fiche **et** le texte brut : la fiche aide à trier, les mots exacts sont ce qu’il faut lire pour corriger.
 
-Pour recevoir les notifications : installer l’application **ntfy** (Android, iOS, ou ntfy.sh dans un navigateur), puis s’abonner au topic exact renseigné dans `FEEDBACK_NTFY_TOPIC`.
+Si le modèle ne répond pas, la remarque part quand même, en « non classé » : une remarque perdue est pire qu’une remarque mal rangée. En cas d’échec du webhook (non-2xx ou délai de 10 s dépassé), le message est explicite et **le texte reste dans la zone de saisie**. Plafond de 20 envois par jour, 2 000 caractères par remarque.
 
 ## Variables d'environnement
 
@@ -46,7 +46,8 @@ Aucune valeur n'est versionnée : `.env.example` donne la liste, les valeurs viv
 | `SESSION_SECRET` | Longue chaîne aléatoire qui signe le cookie de session (HMAC SHA-256, 30 jours). À défaut, la signature retombe sur `APP_USER:APP_PASSWORD` — moins bien. |
 | `OPENAI_API_KEY` | Clé dédiée à cet outil. Mettre une limite de dépense sur le projet OpenAI. |
 | `OPENAI_MODEL` | Modèle de l'analyse ; `gpt-4o-mini` par défaut. |
-| `FEEDBACK_NTFY_TOPIC` | Topic [ntfy](https://ntfy.sh) sur lequel partent les remarques du drapeau rouge. **Jamais dans le code** : un topic ntfy connu se lit par n’importe qui. Choisir une chaîne longue et imprévisible. Variable absente : la route `/api/feedback` répond une erreur explicite plutôt que d’avaler la remarque. |
+| `FEEDBACK_WEBHOOK_URL` | URL du workflow n8n qui reçoit les remarques du drapeau rouge. **Jamais dans le code** : une URL de webhook connue laisse n’importe qui y poster, et le dépôt est public. |
+| `FEEDBACK_WEBHOOK_SECRET` | Secret envoyé en en-tête `x-feedback-secret`, pour que le workflow n’accepte que les remarques de cette application. |
 | `TARGET_CONTACTS` | Contacts des petites structures sans portail de recrutement, en JSON : `{"<id d'entreprise>":[{"email":"...","role":"...","source":"..."}]}`. **Le dépôt est public** : ces adresses ne sont jamais dans le code. La variable est lue côté serveur par `/api/contacts`, qui est derrière le middleware — sans session valide, la réponse est un 401. Variable absente ou illisible : l'application fonctionne sans, les contacts ne s'affichent simplement pas. |
 
 ## Déployer sur Vercel (gratuit)

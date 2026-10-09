@@ -3,7 +3,8 @@ import { useState } from "react";
 import type { Analysis, AppData } from "@/lib/types";
 import { uid } from "@/lib/store";
 import AnalysisView from "./AnalysisView";
-import type { Updater } from "./shared";
+import { CopyButton, type Updater } from "./shared";
+import { buildClaudePrompt } from "@/lib/claudePrompt";
 
 export default function OfferAnalyzer({ data, update, onSaved }: { data: AppData; update: Updater; onSaved: () => void }) {
   const [form, setForm] = useState({ company: "", title: "", url: "", text: "" });
@@ -58,7 +59,16 @@ export default function OfferAnalyzer({ data, update, onSaved }: { data: AppData
           <button onClick={analyse} disabled={loading || !form.text.trim()}>
             {loading ? "Analyse en cours…" : "Analyser"}
           </button>
+          {/* Disponible dès que l'annonce est collée : l'analyse n'est qu'un bonus
+              dans le prompt, pas un préalable. */}
+          {form.text.trim() && (
+            <CopyButton
+              text={buildClaudePrompt({ profile: data.profile, letter: data.letter, offer: form, analysis: result ?? undefined })}
+              label="Copier le prompt pour Claude"
+            />
+          )}
         </div>
+        {form.text.trim() && <p className="muted">Colle-le dans Claude (claude.ai).</p>}
         {error && <p className="error">{error}</p>}
       </div>
       {result && (

@@ -1,6 +1,6 @@
 # Alternance Mathis
 
-Outil personnel de recherche d'alternance (banque-assurance, Lyon), derrière une page de connexion (identifiant + mot de passe).
+Outil personnel de recherche d'alternance (banque-assurance, Lyon), derrière une page de connexion (identifiant seul).
 
 L'application suit un **parcours en quatre étapes**, dans l'ordre : on ne cherche pas d'offre avant d'avoir posé ses alertes, et on n'analyse pas une annonce avant d'en avoir trouvé une.
 
@@ -41,9 +41,8 @@ Aucune valeur n'est versionnée : `.env.example` donne la liste, les valeurs viv
 
 | Variable | Rôle |
 | --- | --- |
-| `APP_USER` | Identifiant de la page de connexion. |
-| `APP_PASSWORD` | Mot de passe de la page de connexion. |
-| `SESSION_SECRET` | Longue chaîne aléatoire qui signe le cookie de session (HMAC SHA-256, 30 jours). À défaut, la signature retombe sur `APP_USER:APP_PASSWORD` — moins bien. |
+| `APP_USER` | Identifiant de la page de connexion. **Il suffit à lui seul : il n’y a plus de mot de passe.** La casse et les espaces autour sont ignorés à la saisie. Ne jamais écrire sa valeur dans le dépôt. |
+| `SESSION_SECRET` | Longue chaîne aléatoire qui signe le cookie de session (HMAC SHA-256, 30 jours). À défaut, la signature retombe sur `APP_USER` — moins bien. |
 | `OPENAI_API_KEY` | Clé dédiée à cet outil. Mettre une limite de dépense sur le projet OpenAI. |
 | `OPENAI_MODEL` | Modèle de l'analyse ; `gpt-4o-mini` par défaut. |
 | `FEEDBACK_WEBHOOK_URL` | URL du workflow n8n qui reçoit les remarques du drapeau rouge. **Jamais dans le code** : une URL de webhook connue laisse n’importe qui y poster, et le dépôt est public. |

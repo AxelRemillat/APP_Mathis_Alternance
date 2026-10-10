@@ -2,8 +2,15 @@
 export const COOKIE = "am_session";
 const DAYS = 30;
 
+/*
+ * Secret de signature. `SESSION_SECRET` est en place sur Vercel ; le repli sur
+ * l'identifiant seul n'existe que pour un environnement qui l'aurait oublié.
+ * Conséquence assumée du changement : les sessions signées avec l'ancien
+ * secret (identifiant + mot de passe) ne valident plus — chacun se reconnecte
+ * une fois.
+ */
 function secret() {
-  return process.env.SESSION_SECRET || `${process.env.APP_USER}:${process.env.APP_PASSWORD}`;
+  return process.env.SESSION_SECRET || `${process.env.APP_USER}`;
 }
 
 function b64url(buf: ArrayBuffer) {
@@ -47,9 +54,19 @@ export async function verifyToken(token?: string) {
   return safeEqual(token.slice(i + 1), await hmac(payload));
 }
 
-export function credentialsOk(user: string, password: string) {
-  const u = process.env.APP_USER || "";
-  const p = process.env.APP_PASSWORD || "";
-  if (!u || !p) return false;
-  return safeEqual(user.trim(), u) && safeEqual(password, p);
+/**
+ * L'identifiant suffit. Casse et espaces autour ignorés : « Mathis_Levrot »,
+ * « mathis_levrot » et «  Mathis_Levrot  » ouvrent la même porte — c'est
+ * exactement ce qui empêchait Mathis d'entrer.
+ *
+ * La comparaison reste à temps constant, sur les valeurs NORMALISÉES : elle ne
+ * protège plus un mot de passe, mais elle évite de révéler l'identifiant
+ * caractère par caractère à qui mesurerait les temps de réponse.
+ */
+const normalize = (value: string) => value.trim().toLowerCase();
+
+export function credentialsOk(user: string) {
+  const expected = normalize(process.env.APP_USER || "");
+  if (!expected) return false;
+  return safeEqual(normalize(user), expected);
 }

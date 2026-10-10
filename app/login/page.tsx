@@ -3,7 +3,6 @@ import { useState } from "react";
 
 export default function Login() {
   const [user, setUser] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -14,7 +13,7 @@ export default function Login() {
     const res = await fetch("/api/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ user, password }),
+      body: JSON.stringify({ user }),
     });
     const json = await res.json().catch(() => ({}));
     setLoading(false);
@@ -29,9 +28,6 @@ export default function Login() {
       <form className="panel" onSubmit={submit}>
         <label>Identifiant
           <input id="l-user" autoComplete="username" value={user} onChange={(e) => setUser(e.target.value)} required />
-        </label>
-        <label>Mot de passe
-          <input id="l-pwd" type="password" autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         </label>
         <button type="submit" disabled={loading}>{loading ? "Connexion…" : "Se connecter"}</button>
         {error && <p className="error">{error}</p>}

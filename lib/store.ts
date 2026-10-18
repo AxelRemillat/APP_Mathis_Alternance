@@ -23,7 +23,13 @@ export function useAppData() {
   useEffect(() => {
     try {
       const raw = localStorage.getItem(KEY);
-      if (raw) setData({ ...initial(), ...JSON.parse(raw) });
+      if (raw) {
+        const saved = { ...initial(), ...JSON.parse(raw) } as AppData;
+        // Les entreprises ajoutées à la liste de départ après la première visite
+        // (ex. ingénieur d'affaires, #52) rejoignent celles déjà suivies, sans rien écraser.
+        const known = new Set(saved.companies.map((c) => c.id));
+        setData({ ...saved, companies: [...saved.companies, ...DEFAULT_COMPANIES.filter((c) => !known.has(c.id))] });
+      }
     } catch {
       /* stockage indisponible : on garde les données par défaut */
     }

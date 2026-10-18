@@ -1,5 +1,5 @@
 "use client";
-import { KEYWORDS, LINKEDIN_QUERY, PROFILE_KIT, ROUTINE, type Platform } from "@/lib/platforms";
+import { KEYWORDS, LINKEDIN_QUERY, LINKEDIN_QUERY_BUSINESS, PROFILE_KIT, SEARCH_FILTERS, ROUTINE, type Platform } from "@/lib/platforms";
 import { SEARCH_PLATFORMS } from "@/lib/steps";
 import { CopyButton } from "./shared";
 
@@ -59,6 +59,7 @@ function Keywords() {
   return (
     <div className="panel">
       <h2>Mots-clés de recherche</h2>
+      <p className="muted">Ingénieur d&apos;affaires en tête, puis finance, assurance et banque. <b>Filtres :</b> {SEARCH_FILTERS}</p>
       <ul className="clean keywords">
         {KEYWORDS.map((k) => (
           <li key={k} className="row" style={{ justifyContent: "space-between" }}>
@@ -67,7 +68,10 @@ function Keywords() {
           </li>
         ))}
       </ul>
-      <b>Requête LinkedIn prête à copier</b>
+      <b>Requête LinkedIn — ingénieur d&apos;affaires (priorité)</b>
+      <pre className="text">{LINKEDIN_QUERY_BUSINESS}</pre>
+      <CopyButton text={LINKEDIN_QUERY_BUSINESS} label="Copier la requête" />
+      <b>Requête LinkedIn — banque et assurance</b>
       <pre className="text">{LINKEDIN_QUERY}</pre>
       <CopyButton text={LINKEDIN_QUERY} label="Copier la requête" />
     </div>

@@ -22,6 +22,7 @@ export default function AnalysisView({ a }: { a: Analysis }) {
     <div className="stack">
       <div className="row">
         <span className={`score ${tone}`}>{a.score}/10</span>
+        {a.bonus ? <span className="tag gold">dont +{a.bonus} ingénieur d&apos;affaires</span> : null}
         <p>{a.verdict}</p>
       </div>
       {a.redFlags.length > 0 && <div className="error">{a.redFlags.join(" · ")}</div>}

@@ -37,7 +37,7 @@ export default function Home() {
   return (
     <main className="wrap">
       <header className="stack">
-        <span className="eyebrow">Alternance banque &amp; assurance · Lyon · oct. 2026 → sept. 2027</span>
+        <span className="eyebrow">Alternance ingénieur d&apos;affaires, puis finance, assurance &amp; banque · Lyon · oct. 2026 → sept. 2027</span>
         <div className="row" style={{ justifyContent: "space-between" }}>
           <h1>Recherche d&apos;alternance de Mathis</h1>
           <button className="ghost" onClick={logout}>Se déconnecter</button>

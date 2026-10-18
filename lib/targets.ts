@@ -1,7 +1,8 @@
 import type { Company } from "./types";
+import { BUSINESS_COMPANIES } from "./targetsBusiness";
 
 // Liste de départ : agences d'assurance et entreprises banque-assurance à Lyon (implantations à vérifier avant d'écrire).
-export const DEFAULT_COMPANIES: Company[] = [
+const FINANCE_COMPANIES: Company[] = [
  {
   "id": "mma-agences",
   "name": "Agences MMA de la région lyonnaise",
@@ -684,3 +685,6 @@ export const DEFAULT_COMPANIES: Company[] = [
   "action": "Postuler en ligne"
  }
 ];
+
+// Cible n°1 d'abord (ingénieur d'affaires), puis finance, assurance et banque.
+export const DEFAULT_COMPANIES: Company[] = [...BUSINESS_COMPANIES, ...FINANCE_COMPANIES];

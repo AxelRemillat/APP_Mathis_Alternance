@@ -5,7 +5,10 @@ import { uid } from "@/lib/store";
 import { CopyButton, StatusSelect, withStatus, type Updater } from "./shared";
 import { buildSpontaneousPrompt } from "@/lib/claudePrompt";
 
-const FILTERS = ["Toutes", "Prioritaires", "Agence d'assurance", "Banque", "Assurance", "Courtier", "Conseil banque-assurance", "Fintech", "En cours"];
+const FILTERS = ["Toutes", "Prioritaires", "Ingénieur d'affaires", "Fintech", "Conseil banque-assurance", "Assurance", "Agence d'assurance", "Courtier", "Banque", "En cours"];
+// Ordre d'affichage (#52) : ingénieur d'affaires → finance → assurance → banque → le reste.
+const RANK: Record<string, number> = { "Ingénieur d'affaires": 0, Fintech: 1, "Conseil banque-assurance": 1, Assurance: 2, "Agence d'assurance": 2, Courtier: 2, Banque: 3, "Banque publique": 3 };
+const rank = (c: Company) => RANK[c.category] ?? 4;
 const OPEN = ["sent", "relance", "interview", "offer"];
 
 function match(c: Company, f: string) {
@@ -45,7 +48,7 @@ export default function Companies({ data, update }: { data: AppData; update: Upd
     setName("");
   }
 
-  const list = data.companies.filter((c) => match(c, filter)).sort((a, b) => Number(b.priority) - Number(a.priority));
+  const list = data.companies.filter((c) => match(c, filter)).sort((a, b) => rank(a) - rank(b) || Number(b.priority) - Number(a.priority));
   return (
     <section className="stack">
       <div className="row filters" role="group" aria-label="Filtrer">
@@ -71,6 +74,7 @@ export default function Companies({ data, update }: { data: AppData; update: Upd
               <a key={l.url} href={l.url} target="_blank" rel="noopener noreferrer">{l.label}</a>
             ))}
             {c.action && <span className="tag">{c.action}</span>}
+            {c.toVerify && <span className="tag">lien à vérifier à la main</span>}
             {(contacts[c.id] ?? []).map((contact) => (
               <a key={contact.email} href={`mailto:${contact.email}`}>
                 {contact.role ? `Écrire — ${contact.role}` : "Écrire"}

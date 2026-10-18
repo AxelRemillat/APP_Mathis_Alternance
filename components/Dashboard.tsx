@@ -2,8 +2,8 @@
 import { STATUSES, type AppData } from "@/lib/types";
 import { daysSince } from "@/lib/store";
 
-// Date limite de signature probable : 3 mois après le début de la formation (12/10/2026), à confirmer avec l'ISG.
-const DEADLINE = new Date("2027-01-12");
+// Date limite de signature du contrat : 10 décembre 2026 (indiquée par Mathis, feedback FB-476).
+const DEADLINE = new Date("2026-12-10");
 
 export default function Dashboard({ data, go }: { data: AppData; go: (tab: string) => void }) {
   const all = [
@@ -26,8 +26,8 @@ export default function Dashboard({ data, go }: { data: AppData; go: (tab: strin
         ))}
       </div>
       <p className="alert">
-        Signature du contrat : il reste environ <b className="mono">{daysLeft} jours</b> avant la mi-janvier 2027 (3 mois
-        après le début de la formation, date à confirmer avec l&apos;ISG).
+        Signature du contrat : il reste environ <b className="mono">{daysLeft} jours</b> avant la date limite du
+        10 décembre 2026.
       </p>
       <div className="grid">
         <div className="panel">

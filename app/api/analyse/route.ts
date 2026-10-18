@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { buildPrompt } from "@/lib/prompt";
+import { withTargetBonus } from "@/lib/score";
 import type { Analysis } from "@/lib/types";
 
 export const runtime = "nodejs";
@@ -54,7 +55,10 @@ export async function POST(req: Request) {
   const json = await res.json();
   try {
     const parsed = JSON.parse(json.choices?.[0]?.message?.content ?? "{}");
-    return NextResponse.json({ analysis: normalize(parsed) });
+    const analysis = normalize(parsed);
+    // Cible n°1 : bonus ingénieur d'affaires, jamais de pénalité pour finance, assurance ou banque.
+    const { score, bonus } = withTargetBonus(analysis.score, { title: String(offer.title ?? ""), text: String(offer.text) });
+    return NextResponse.json({ analysis: { ...analysis, score, bonus } });
   } catch {
     return NextResponse.json({ error: "Réponse illisible, relance l'analyse." }, { status: 502 });
   }

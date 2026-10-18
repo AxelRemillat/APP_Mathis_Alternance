@@ -2,6 +2,8 @@
 export function buildPrompt(profile: string, letter: string, offer: { title: string; company: string; text: string }) {
   return `Tu aides un candidat à décrocher une alternance. Réponds uniquement en JSON valide, en français.
 
+OBJECTIF DU CANDIDAT : en priorité une alternance d'ingénieur d'affaires (business developer, chargé d'affaires, account manager junior, ingénieur commercial) ; en second la finance, l'assurance et la banque. Note l'adéquation réelle au profil sans tenir compte de cette priorité : l'outil ajoute lui-même un bonus aux offres d'ingénieur d'affaires.
+
 PROFIL DU CANDIDAT :
 ${profile}
 

@@ -10,6 +10,14 @@ export type PromptOffer = { title: string; company: string; url?: string; text: 
 // au modèle qu'il manque une information, et il l'invente.
 const section = (title: string, body: string) => (body.trim() ? `${title}\n${body.trim()}` : "");
 
+/**
+ * Objectif prioritaire (#52). Le lien avec le parcours ne cite que des faits du
+ * profil (stages MMA) ; ce qui n'y est pas reste un marqueur à compléter.
+ */
+export const OBJECTIVE = `Cible n°1 : une alternance d'ingénieur d'affaires (business developer, chargé(e) d'affaires, account manager junior, ingénieur commercial). Je garde en second la finance, l'assurance et la banque.
+Lien avec mon parcours, à n'utiliser qu'à partir des faits de mon profil : mes deux stages en agence MMA (relation client, rendez-vous de la découverte au conseil, devis et contrats, harmonisation de l'argumentaire commercial) et ma double formation ingénieur (ESME) et gestion de projet (ISG).
+Encore à préciser : [À COMPLÉTER PAR MATHIS : secteur technique préféré (industrie, énergie, logiciel, télécoms…)] ; [À COMPLÉTER PAR MATHIS : expérience de prospection ou de vente au-delà des stages MMA, s'il y en a une].`;
+
 const list = (label: string, items: readonly string[] | undefined) =>
   items?.length ? `${label} : ${items.join(" · ")}` : "";
 
@@ -42,6 +50,7 @@ export function buildClaudePrompt(input: {
 
   return [
     `Tu m'aides à préparer une candidature en alternance. Réponds en français, en texte structuré avec des titres — pas de JSON, pas de tableau.`,
+    section("MON OBJECTIF", OBJECTIVE),
     section("MON PROFIL", profile),
     section("MA LETTRE TYPE (ma voix : garde-la, adapte-la)", letter),
     section(`L'ANNONCE (${who})${offer.url?.trim() ? `\nLien : ${offer.url.trim()}` : ""}`, offer.text),
@@ -60,6 +69,7 @@ export function buildClaudePrompt(input: {
 
 RÈGLES, elles comptent autant que le reste :
 - N'invente rien qui ne soit pas dans mon profil : ni expérience, ni chiffre, ni outil, ni diplôme. Si une information te manque, écris [à compléter] et continue.
+- Pour un poste d'ingénieur d'affaires, ne me prête aucune expérience de vente ou de prospection absente de mon profil : appuie-toi sur les stages MMA et ma formation, et laisse les marqueurs [À COMPLÉTER PAR MATHIS].
 - Pas de superlatifs invérifiables (« expertise reconnue », « passionné depuis toujours », « leader »). Un fait vaut mieux qu'un adjectif.
 - Vouvoiement dans la lettre, l'e-mail et la note.
 - Ton sobre : des phrases simples, aucune flatterie de l'entreprise, aucune formule creuse.
@@ -83,6 +93,7 @@ export function buildSpontaneousPrompt(input: {
   const { profile, letter, company } = input;
   return [
     "Tu m'aides à préparer une candidature SPONTANÉE en alternance — il n'y a pas d'annonce. Réponds en français, en texte structuré avec des titres.",
+    section("MON OBJECTIF", OBJECTIVE),
     section("MON PROFIL", profile),
     section("MA LETTRE TYPE (ma voix : garde-la, adapte-la)", letter),
     section(

@@ -20,19 +20,19 @@ export const STEPS: readonly Step[] = [
     id: "signup",
     label: "1. S'inscrire",
     title: "S'inscrire sur les plateformes qui comptent",
-    what: "Crée tes comptes sur les sites qui publient vraiment des alternances en banque-assurance, et pose tes alertes.",
+    what: "Crée tes comptes sur les sites qui publient vraiment des alternances — ingénieur d'affaires d'abord, puis finance, assurance et banque — et pose tes alertes.",
   },
   {
     id: "apply",
     label: "2. Candidater",
     title: "Candidater aux entreprises ciblées",
-    what: "Quarante entreprises lyonnaises, chacune avec son lien d'action et un prompt prêt à coller dans Claude.",
+    what: "D'abord une vingtaine d'entreprises qui recrutent des alternants ingénieurs d'affaires, puis les quarante de la finance, de l'assurance et de la banque, chacune avec son lien d'action et un prompt prêt à coller dans Claude.",
   },
   {
     id: "find",
     label: "3. Trouver des offres",
     title: "Trouver des offres à analyser",
-    what: "Les sources secondaires, les mots-clés à chercher et la requête LinkedIn prête à l'emploi.",
+    what: "Les sources secondaires, les recherches types (ingénieur d'affaires en tête) et les requêtes LinkedIn prêtes à l'emploi.",
   },
   {
     id: "write",

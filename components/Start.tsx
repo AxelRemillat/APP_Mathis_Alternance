@@ -15,6 +15,10 @@ export default function Start({ data, go }: { data: AppData; go: (tab: string) =
     <section className="stack">
       <div className="panel">
         <h2>Par où commencer</h2>
+        <p className="alert">
+          <b>Priorité : l&apos;ingénierie d&apos;affaires</b> (ingénieur d&apos;affaires, business developer, chargé d&apos;affaires).
+          La finance, l&apos;assurance et la banque restent dans la recherche, en second.
+        </p>
         <p className="muted">Les quatre étapes, dans l&apos;ordre. Reprends là où tu t&apos;es arrêté.</p>
         <div className="stack" style={{ gap: 10 }}>
           {STEPS.map((step, index) => {

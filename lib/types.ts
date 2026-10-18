@@ -26,10 +26,14 @@ export type Company = {
   note: string;
   sentAt?: string; // ISO date de la candidature, sert aux relances
   custom?: boolean;
+  /** Lien non confirmé automatiquement (page qui refuse les robots) : à vérifier à la main. */
+  toVerify?: boolean;
 };
 
 export type Analysis = {
-  score: number; // 0 à 10
+  score: number; // 0 à 10, bonus de cible compris
+  /** Bonus « ingénieur d'affaires » déjà inclus dans `score` (lib/score.ts). */
+  bonus?: number;
   verdict: string;
   strengths: string[];
   gaps: string[];

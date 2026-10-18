@@ -99,11 +99,11 @@ export const PLATFORMS: Platform[] = [
 
 // « Ce que tu remplis partout » : repris du profil de l'app (lib/profile.ts), rien d'ajouté.
 export const PROFILE_KIT = {
-  title: "Alternant chargé de projet — Banque & Assurance | MSc Management & gestion de projets (ISG)",
+  title: "Alternance ingénieur d'affaires / business developer — et finance, assurance, banque | MSc Management & gestion de projets (ISG)",
   availability:
     "Alternance de 12 mois, démarrage dès que possible (octobre 2026), rythme selon le calendrier ISG (4 jours en entreprise, 1 jour de cours), basé à Lyon.",
   pitch:
-    "Étudiant en double diplôme ESME (ingénieur Big Data) et ISG Lyon (MSc Management & gestion de projet), je cherche une alternance dans la banque ou l'assurance. Deux stages en agence MMA m'ont fait travailler l'accueil client, les sinistres, les contrats et les devis, et l'accompagnement des conseillers en rendez-vous. J'ai aussi cofondé RISE, une plateforme étudiante dont j'ai piloté l'équipe de 4.",
+    "Étudiant en double diplôme ESME (ingénieur Big Data) et ISG Lyon (MSc Management & gestion de projet), je cherche une alternance d'ingénieur d'affaires (business developer, chargé d'affaires), en restant ouvert à la finance, l'assurance et la banque. Deux stages en agence MMA m'ont fait travailler l'accueil client, les sinistres, les contrats et les devis, et l'accompagnement des conseillers en rendez-vous. J'ai aussi cofondé RISE, une plateforme étudiante dont j'ai piloté l'équipe de 4.",
   skills: [
     "Gestion de projet",
     "Relation client (accueil, rendez-vous)",
@@ -115,7 +115,15 @@ export const PROFILE_KIT = {
   documents: ["CV en PDF à jour", "Lettre type (onglet « Profil & fiche »)"],
 };
 
+// Cible n°1 (#52) en tête de liste, puis les recherches finance, assurance et banque.
 export const KEYWORDS = [
+  "alternance ingénieur d'affaires",
+  "alternance business developer",
+  "alternance chargé d'affaires",
+  "alternance ingénieur commercial",
+  "alternance account manager junior",
+  "alternance ingénieur d'affaires Lyon",
+  "apprentissage business developer Lyon",
   "alternance chargé de clientèle banque",
   "alternance conseiller bancaire",
   "alternance conseiller clientèle assurance",
@@ -129,6 +137,12 @@ export const KEYWORDS = [
   "apprentissage banque Lyon",
   "apprentissage assurance Lyon",
 ];
+
+/** Filtres à poser sur chaque site pour les recherches ci-dessus. */
+export const SEARCH_FILTERS = "Lieu : Lyon (+ 30 km) · Contrat : alternance ou apprentissage · Durée : 12 mois · Rythme : 4 jours en entreprise, 1 jour de cours · Début : dès que possible";
+
+export const LINKEDIN_QUERY_BUSINESS =
+  '("alternance" OR "apprentissage") AND ("ingénieur d\'affaires" OR "business developer" OR "chargé d\'affaires" OR "ingénieur commercial" OR "account manager")';
 
 export const LINKEDIN_QUERY = '("alternance" OR "apprentissage") AND ("banque" OR "assurance") AND ("projet" OR "PMO" OR "clientèle")';
 

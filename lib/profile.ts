@@ -1,8 +1,8 @@
 // Profil et lettre de base de Mathis : modifiables dans l'onglet « Profil & fiche ».
 // Aucune coordonnée personnelle ici (dépôt public) : Mathis ajoute son téléphone dans l'app, stocké dans son navigateur.
 export const DEFAULT_PROFILE = `Mathis Levrot — étudiant ingénieur en 5e année, double diplôme ESME (ingénieur Big Data & Digital Marketing) et ISG Lyon (MSc2 Management & gestion de projet, RNCP 38874).
-Recherche : alternance de 12 mois à Lyon, du 12 octobre 2026 au 30 septembre 2027, dans l'assurance ou la banque. Disponible dès maintenant.
-Postes visés : collaborateur / conseiller en agence d'assurance avec un rôle de référent transformation digitale et IA ; chargé de projet, PMO ou MOA en assurance ou banque.
+Recherche : alternance de 12 mois à Lyon, du 12 octobre 2026 au 30 septembre 2027, en ingénierie d'affaires en priorité, ou dans la finance, l'assurance ou la banque. Disponible dès maintenant.
+Postes visés : en priorité ingénieur d'affaires (business developer, chargé d'affaires, account manager junior, ingénieur commercial) ; puis, en finance, assurance ou banque : collaborateur / conseiller en agence d'assurance avec un rôle de référent transformation digitale et IA ; chargé de projet, PMO ou MOA en assurance ou banque.
 Rythme : 4 jours par semaine en entreprise, 1 jour de cours (le plus souvent le vendredi), 7 semaines de cours sur l'année, 100 % en entreprise de mi-juin à fin septembre 2027.
 
 Expériences :
